@@ -17,15 +17,14 @@ public class UserAccountService {
 
     public void addAccounts(UserAccounts userAccounts){
     if(!UserAccountsDao.checkUserAccount(userAccounts)){
-        userAccounts.setId(userAccountsList.size() + 1);
-        userAccountsList.add(userAccounts);
-    }
+            UserAccountsDao.addAccounts(userAccounts);
+        }
 
     }
 
     public void deleteAccounts(UserAccounts userAccounts){
         if(!UserAccountsDao.checkUserAccount(userAccounts)){
-            userAccountsList.remove(userAccounts);
+            UserAccountsDao.deleteAccounts(userAccounts);
         }
 
     }

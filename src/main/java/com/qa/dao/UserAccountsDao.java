@@ -66,4 +66,23 @@ public class UserAccountsDao {
         return userAccountsList;
     }
 
+
+    public static void addAccounts(UserAccounts userAccounts){
+        if(!UserAccountsDao.checkUserAccount(userAccounts)){
+            userAccounts.setId(userAccountsList.size() + 1);
+            userAccountsList.add(userAccounts);
+        }
+
+    }
+
+    public static void deleteAccounts(UserAccounts userAccounts){
+        if(UserAccountsDao.checkUserAccount(userAccounts)){
+            userAccountsList.remove(userAccounts.getId());
+            System.out.println("Size is : " + userAccountsList.size());
+
+        }
+
+    }
+
+
 }

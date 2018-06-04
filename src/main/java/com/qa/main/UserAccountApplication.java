@@ -5,6 +5,8 @@ import com.qa.service.UserAccountService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,9 +34,9 @@ public class UserAccountApplication {
 
 
     @POST
-    @RequestMapping("/add")
+    @RequestMapping("add/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response addUserAccount(@Valid UserAccounts userAccount){
+    public Response addUserAccount(@PathVariable("id") String id, @RequestBody UserAccounts userAccount){
         UserAccountService userAccountService = new UserAccountService();
         userAccountService.addAccounts(userAccount);
         return Response.ok("account has been successfully added").build();
@@ -42,9 +44,9 @@ public class UserAccountApplication {
 
 
     @DELETE
-    @RequestMapping("/delete")
+    @RequestMapping("delete/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response deleteUserAccount(@Valid UserAccounts userAccount){
+    public Response deleteUserAccount(@PathVariable("id") String id, @RequestBody UserAccounts userAccount){
         UserAccountService userAccountService = new UserAccountService();
         userAccountService.deleteAccounts(userAccount);
         return Response.ok("account has been successfully deleted").build();
