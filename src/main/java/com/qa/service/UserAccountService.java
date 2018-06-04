@@ -23,7 +23,7 @@ public class UserAccountService {
     }
 
     public void deleteAccounts(UserAccounts userAccounts){
-        if(!UserAccountsDao.checkUserAccount(userAccounts)){
+        if(UserAccountsDao.checkUserAccount(userAccounts)){
             UserAccountsDao.deleteAccounts(userAccounts);
         }
 
