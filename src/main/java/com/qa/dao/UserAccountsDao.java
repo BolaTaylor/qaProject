@@ -78,8 +78,6 @@ public class UserAccountsDao {
     public static void deleteAccounts(UserAccounts userAccounts){
         if(UserAccountsDao.checkUserAccount(userAccounts)){
             userAccountsList.remove(userAccounts.getId());
-            System.out.println("Size is : " + userAccountsList.size());
-
         }
 
     }
